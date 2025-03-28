@@ -62,6 +62,7 @@ abstract class MollieBase extends AbstractPaymentProvider {
    * @param options - The options to validate
    * @throws {MedusaError} If API key is missing
    */
+
   static validateOptions(options: ProviderOptions): void {
     if (!options.apiKey || !options.redirectUrl || !options.medusaUrl) {
       throw new MedusaError(
@@ -87,13 +88,6 @@ abstract class MollieBase extends AbstractPaymentProvider {
       process.env.NODE_ENV === "test" ||
       false;
 
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    console.log(
-      {
-        apiKey: options.apiKey,
-      }
-    )
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
     this.client_ = createMollieClient({
       apiKey: "test_Ty6CgHTurcaDwFpQ9VwC9ysqp4hBzR",

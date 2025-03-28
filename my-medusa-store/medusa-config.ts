@@ -1,9 +1,19 @@
 import { defineConfig, loadEnv } from '@medusajs/framework/utils'
+import { TENANT_MODULE } from './src/services/tenant'
+import { USER_LICENSE_MODULE } from './src/services/user-license'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
   modules: [
+    {
+      key: TENANT_MODULE,
+      resolve: "./src/modules/tenant",
+    },
+    {
+      key: USER_LICENSE_MODULE,
+      resolve: "./src/modules/user-license",
+    },
     {
       resolve: "@medusajs/medusa/payment",
       options: {
@@ -18,7 +28,6 @@ module.exports = defineConfig({
 
             }
           },
-
         ]
       }
     }
@@ -33,6 +42,7 @@ module.exports = defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
-  }
+  },
+
 })
 
