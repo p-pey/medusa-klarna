@@ -1866,6 +1866,98 @@ export type Notification = {
   deleted_at: Maybe<Scalars['DateTime']['output']>;
 };
 
+export enum UserCustomerDeploymentTypeEnum {
+  Refractedsaas = 'REFRACTEDSAAS',
+  Refracteddedicated = 'REFRACTEDDEDICATED',
+  Onpremise = 'ONPREMISE'
+}
+
+export enum UserCustomerLicenseStatusEnum {
+  Active = 'ACTIVE',
+  Pending = 'PENDING',
+  Expired = 'EXPIRED'
+}
+
+export enum UserCustomerPartnershipTypeEnum {
+  Integrator = 'INTEGRATOR',
+  Reseller = 'RESELLER'
+}
+
+export type UserCustomer = {
+  __typename?: 'UserCustomer';
+  id: Scalars['ID']['output'];
+  deploymentType: UserCustomerDeploymentTypeEnum;
+  name: Scalars['String']['output'];
+  licenseStatus: UserCustomerLicenseStatusEnum;
+  partnershipType: Maybe<UserCustomerPartnershipTypeEnum>;
+  discountPercentage: Maybe<Scalars['Int']['output']>;
+  platformCost: Maybe<Scalars['Int']['output']>;
+  flatFee: Maybe<Scalars['Int']['output']>;
+  supportPlanType: Maybe<Scalars['String']['output']>;
+  supportCostPerMonth: Maybe<Scalars['Int']['output']>;
+  totalCostPerMonth: Scalars['Int']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at: Maybe<Scalars['DateTime']['output']>;
+};
+
+export enum LicenseTypeEnum {
+  Penetrationtesterbasic = 'PENETRATIONTESTERBASIC',
+  Penetrationtesterplus = 'PENETRATIONTESTERPLUS',
+  Vulnerabilitymanager = 'VULNERABILITYMANAGER'
+}
+
+export enum LicenseIntegrationsEnum {
+  None = 'NONE',
+  Limited = 'LIMITED',
+  Datainput = 'DATAINPUT',
+  Full = 'FULL'
+}
+
+export enum LicenseQueuePriorityEnum {
+  Low = 'LOW',
+  High = 'HIGH'
+}
+
+export type License = {
+  __typename?: 'License';
+  id: Scalars['ID']['output'];
+  type: LicenseTypeEnum;
+  pricePerMonth: Scalars['Int']['output'];
+  organizations: Scalars['String']['output'];
+  assessments: Scalars['String']['output'];
+  assets: Scalars['Int']['output'];
+  scopesAccess: Scalars['Boolean']['output'];
+  integrations: LicenseIntegrationsEnum;
+  scanUploadLimit: Scalars['String']['output'];
+  maxScansStored: Scalars['Int']['output'];
+  queuePriority: LicenseQueuePriorityEnum;
+  guestAccounts: Scalars['Int']['output'];
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type Tenant = {
+  __typename?: 'Tenant';
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  customerId: Maybe<Scalars['String']['output']>;
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type AppPayment = {
+  __typename?: 'AppPayment';
+  id: Scalars['ID']['output'];
+  trackingCode: Scalars['Int']['output'];
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at: Maybe<Scalars['DateTime']['output']>;
+};
+
 export type LinkCartPaymentCollection = {
   __typename?: 'LinkCartPaymentCollection';
   cart_id: Scalars['String']['output'];
@@ -2231,6 +2323,14 @@ declare module '@medusajs/framework/types' {
     shipping_profiles: ShippingProfile
     notification: Notification
     notifications: Notification
+    user_customer: UserCustomer
+    user_customers: UserCustomer
+    license: License
+    licenses: License
+    tenant: Tenant
+    tenants: Tenant
+    app_payment: AppPayment
+    app_payments: AppPayment
     cart_payment_collection: LinkCartPaymentCollection
     cart_payment_collections: LinkCartPaymentCollection
     cart_promotion: LinkCartPromotion

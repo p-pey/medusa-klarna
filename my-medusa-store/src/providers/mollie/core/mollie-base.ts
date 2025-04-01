@@ -154,12 +154,6 @@ abstract class MollieBase extends AbstractPaymentProvider {
 
 
     } catch (error) {
-      this.logger_.error(`Error initiating Mollie payment::::::::::::::::::`);
-      console.log("error::::", new Error(error).message.split(','));
-      console.log("key value::::", Object.entries(error));
-      console.log("response : : : : :", error?.response);
-      console.log("body :::: ", error?.response?.body);
-      this.logger_.error(`Error initiating Mollie payment:::::::::::::::::::`);
       this.logger_.error({
         message: error.message,
         name: error.response?.body || "No response body",

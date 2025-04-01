@@ -22,6 +22,10 @@ import type { IUserModuleService } from '@medusajs/framework/types'
 import type { IFileModuleService } from '@medusajs/framework/types'
 import type { IFulfillmentModuleService } from '@medusajs/framework/types'
 import type { INotificationModuleService } from '@medusajs/framework/types'
+import type UserCustomer from '..\..\src\modules\user-customer'
+import type License from '..\..\src\modules\license'
+import type Tenant from '..\..\src\modules\tenant'
+import type AppPayment from '..\..\src\modules\payment'
 
 declare module '@medusajs/framework/types' {
   interface ModuleImplementations {
@@ -48,6 +52,10 @@ declare module '@medusajs/framework/types' {
     'user': IUserModuleService,
     'file': IFileModuleService,
     'fulfillment': IFulfillmentModuleService,
-    'notification': INotificationModuleService
+    'notification': INotificationModuleService,
+    'user_customer': InstanceType<(typeof UserCustomer)['service']>,
+    'license': InstanceType<(typeof License)['service']>,
+    'tenant': InstanceType<(typeof Tenant)['service']>,
+    'app_payment': InstanceType<(typeof AppPayment)['service']>
   }
 }

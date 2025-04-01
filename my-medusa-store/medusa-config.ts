@@ -1,19 +1,22 @@
 import { defineConfig, loadEnv } from '@medusajs/framework/utils'
-import { TENANT_MODULE } from './src/services/tenant'
-import { USER_LICENSE_MODULE } from './src/services/user-license'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
   modules: [
     {
-      key: TENANT_MODULE,
+      resolve: "./src/modules/user-customer",
+    },
+    {
+      resolve: "./src/modules/license",
+    },
+    {
       resolve: "./src/modules/tenant",
     },
     {
-      key: USER_LICENSE_MODULE,
-      resolve: "./src/modules/user-license",
+      resolve: './src/modules/payment'
     },
+
     {
       resolve: "@medusajs/medusa/payment",
       options: {
